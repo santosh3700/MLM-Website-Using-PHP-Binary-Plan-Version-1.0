@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2017 at 06:13 AM
+-- Generation Time: Jan 16, 2018 at 08:50 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -47,10 +47,10 @@ INSERT INTO `admin` (`id`, `userid`, `password`) VALUES
 
 CREATE TABLE `income` (
   `id` int(11) NOT NULL,
-  `userid` varchar(50) NOT NULL,
-  `day_bal` int(11) NOT NULL,
-  `current_bal` int(11) NOT NULL,
-  `total_bal` int(11) NOT NULL
+  `userid` varchar(50) DEFAULT NULL,
+  `day_bal` int(11) DEFAULT '0',
+  `current_bal` int(11) DEFAULT '0',
+  `total_bal` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -58,12 +58,7 @@ CREATE TABLE `income` (
 --
 
 INSERT INTO `income` (`id`, `userid`, `day_bal`, `current_bal`, `total_bal`) VALUES
-(1, 'user@tutorialvilla.com', 200, 0, 200),
-(6, 'user1@gmail.com', 100, 100, 100),
-(7, 'user2@gmail.com', 0, 0, 0),
-(8, 'user3@gmail.com', 0, 0, 0),
-(9, 'user4@gmail.com', 0, 0, 0),
-(10, 'user5@gmail.com', 0, 0, 0);
+(1, 'user@tutorialvilla.com', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -78,13 +73,6 @@ CREATE TABLE `income_received` (
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `income_received`
---
-
-INSERT INTO `income_received` (`id`, `userid`, `amount`, `date`) VALUES
-(1, 'user@tutorialvilla.com', 200, '2017-06-01');
-
 -- --------------------------------------------------------
 
 --
@@ -97,21 +85,6 @@ CREATE TABLE `pin_list` (
   `pin` int(11) NOT NULL,
   `status` enum('open','close') NOT NULL DEFAULT 'open'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pin_list`
---
-
-INSERT INTO `pin_list` (`id`, `userid`, `pin`, `status`) VALUES
-(1, 'user@tutorialvilla.com', 723913, 'close'),
-(2, 'user@tutorialvilla.com', 551895, 'close'),
-(3, 'user@tutorialvilla.com', 237823, 'open'),
-(4, 'user@tutorialvilla.com', 921200, 'open'),
-(5, 'user@tutorialvilla.com', 582739, 'open'),
-(6, 'user@tutorialvilla.com', 295144, 'open'),
-(7, 'user1@gmail.com', 658270, 'open'),
-(8, 'user1@gmail.com', 231149, 'open'),
-(9, 'user1@gmail.com', 123400, 'open');
 
 -- --------------------------------------------------------
 
@@ -127,18 +100,6 @@ CREATE TABLE `pin_request` (
   `status` enum('open','close') NOT NULL DEFAULT 'open'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `pin_request`
---
-
-INSERT INTO `pin_request` (`id`, `email`, `amount`, `date`, `status`) VALUES
-(2, 'user@tutorialvilla.com', 1200, '2016-11-22', 'close'),
-(3, 'user@tutorialvilla.com', 1800, '2016-11-22', 'close'),
-(4, 'user@tutorialvilla.com', 2100, '2016-12-31', 'close'),
-(5, 'user@tutorialvilla.com', 3000, '2017-02-06', 'close'),
-(6, 'user@tutorialvilla.com', 2000, '2017-02-09', 'close'),
-(7, 'user1@gmail.com', 1000, '2017-02-09', 'close');
-
 -- --------------------------------------------------------
 
 --
@@ -147,11 +108,11 @@ INSERT INTO `pin_request` (`id`, `email`, `amount`, `date`, `status`) VALUES
 
 CREATE TABLE `tree` (
   `id` int(11) NOT NULL,
-  `userid` varchar(50) NOT NULL,
-  `left` varchar(50) NOT NULL,
-  `right` varchar(50) NOT NULL,
-  `leftcount` int(11) NOT NULL,
-  `rightcount` int(11) NOT NULL
+  `userid` varchar(50) DEFAULT NULL,
+  `left` varchar(50) DEFAULT NULL,
+  `right` varchar(50) DEFAULT NULL,
+  `leftcount` int(11) DEFAULT '0',
+  `rightcount` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -159,12 +120,7 @@ CREATE TABLE `tree` (
 --
 
 INSERT INTO `tree` (`id`, `userid`, `left`, `right`, `leftcount`, `rightcount`) VALUES
-(1, 'user@tutorialvilla.com', 'user1@gmail.com', 'user2@gmail.com', 3, 2),
-(6, 'user1@gmail.com', 'user3@gmail.com', 'user5@gmail.com', 1, 1),
-(7, 'user2@gmail.com', 'user4@gmail.com', '', 1, 0),
-(8, 'user3@gmail.com', '', '', 0, 0),
-(9, 'user4@gmail.com', '', '', 0, 0),
-(10, 'user5@gmail.com', '', '', 0, 0);
+(1, 'user@tutorialvilla.com', NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -188,12 +144,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `mobile`, `address`, `account`, `under_userid`, `side`) VALUES
-(1, 'user@tutorialvilla.com', '123456', '9897883700', 'Gurgaon', '98978789789', '', 'left'),
-(6, 'user1@gmail.com', '123456', '98900809', 'Gurgaon', '08098098', 'user@tutorialvilla.com', 'left'),
-(7, 'user2@gmail.com', '123456', '78897890', 'Gurgaon', '890989', 'user@tutorialvilla.com', 'right'),
-(8, 'user3@gmail.com', '123456', '80989', 'Gurgaon', 'ou89u89089', 'user1@gmail.com', 'left'),
-(9, 'user4@gmail.com', '123456', '97897', 'jkljlj', '089098', 'user2@gmail.com', 'left'),
-(10, 'user5@gmail.com', '123456', '9897645676', 'Delhi', '345738974943', 'user1@gmail.com', 'right');
+(1, 'user@tutorialvilla.com', '123456', '9897883700', 'Gurgaon', '98978789789', '', 'left');
 
 --
 -- Indexes for dumped tables
@@ -254,32 +205,32 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `income`
 --
 ALTER TABLE `income`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `income_received`
 --
 ALTER TABLE `income_received`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pin_list`
 --
 ALTER TABLE `pin_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pin_request`
 --
 ALTER TABLE `pin_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tree`
 --
 ALTER TABLE `tree`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
