@@ -1,4 +1,4 @@
-# MLM-Website-Using-PHP-Binary-Plan-Version-1.0
+# MLM_Website_Using_PHP_Binary_Plan_Version_1.0
 
 <h3>Please visit this link below to get the Final code of this project.</h3>
 
