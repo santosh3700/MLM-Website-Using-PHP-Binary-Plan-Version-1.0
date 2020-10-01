@@ -12,7 +12,7 @@ include('php-includes/check-login.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Mlml Website  - Home</title>
+    <title><h2>Mlml Website  - Home</h2></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
