@@ -18,7 +18,7 @@ if(isset($_GET['pin_request'])){
 		}
 		else{
 			//echo mysqli_error($con);
-			echo '<script>alert("Unknown error occure.");window.location.assign("pin-request.php");</script>';
+			echo '<script>alert("Unknown error occur.");window.location.assign("pin-request.php");</script>';
 		}
 	}
 	else{
